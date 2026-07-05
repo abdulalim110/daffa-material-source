@@ -33,7 +33,6 @@ console.log(tvBrand)
 
 
 let phoneBrand = "Iphone"
-
 console.log(phoneBrand)
 
 { // block scope
@@ -51,7 +50,12 @@ console.log(laptopName)
 
 let bottleName = "Corkcircle"
 
-let bottleName = "Lock N Lock"
+console.log(`${bottleName} is the best bottle`)
 
+
+console.log(bottleName.indexOf("best"))
+console.log(bottleName.substring(4,10))
+
+console.log(bottleName.toLowerCase().replaceAll("c", ""))
 
 
