@@ -1,0 +1,85 @@
+// create table syntax
+CREATE TABLE students (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  student_id_number INT UNIQUE,
+  name VARCHAR(255) NOT NULL,
+  major VARCHAR(255),
+  year  INT,
+  faculty VARCHAR(255),
+  created_at DATETIME DEFAULT(NOW()),
+  updated_at DATETIME DEFAULT(NOW())
+);
+
+
+// Create students
+INSERT INTO students(name, major, year, faculty)
+VALUES(
+  "Jane", "Math", 2025, "Science"
+);
+
+INSERT INTO students(name, major, year, faculty)
+VALUES(
+  "David", "Biology", 2025, "Science"
+);
+
+INSERT INTO students(student_id_number, name, major, year, faculty)
+VALUES 
+  (160121164, "Frank", "Art", 2021, "Art"),
+  (300112165, "John", "Computer Science", 2012, "Computer"),
+  (199113166, "Sarah", "Architectural Engineering", 2013, "Engineering"),
+  (170117167, "Bryan", "Biology", 2017, "Science");
+
+
+ SELECT * FROM students;
+
+
+
+CREATE DATABASE db_simple_ecommerce;
+
+CREATE TABLE customers (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  customer_name VARCHAR(255)
+);
+
+
+CREATE TABLE products (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  product_name VARCHAR(255),
+  customer_id int,
+  CONSTRAINT fk_Customer
+    FOREIGN KEY (customer_id)
+    REFERENCES customers(id)
+    ON DELETE SET NULL
+);
+
+INSERT INTO customers (customer_name)
+VALUES 
+  ("Ali"),
+  ("Budi"),
+  ("Citra");
+
+INSERT INTO products (customer_id, product_name)
+VALUES
+  (1, "Book"),
+  (2, "Pen"),
+  (NULL, "Pencil");
+
+
+SELECT customers.id id_of_customer, customer_name, products.id id_of_product, customer_id, product_name
+FROM customers
+INNER JOIN products
+ON customers.id = products.customer_id;
+
+SELECT customers.id id_of_customer, customer_name, products.id id_of_product, customer_id, product_name
+FROM customers
+LEFT JOIN products
+ON customers.id = products.customer_id;
+
+SELECT customers.id id_of_customer, customer_name, products.id id_of_product, customer_id, product_name
+FROM customers
+RIGHT JOIN products
+ON customers.id = products.customer_id;
+
+SELECT customers.id id_of_customer, customer_name, products.id id_of_product, customer_id, product_name
+FROM customers
+CROSS JOIN products

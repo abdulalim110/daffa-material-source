@@ -1,0 +1,7 @@
+db.movies.updateOne(
+   { _id: '6a2e77cd68296ddf29eec4ab' },
+   {
+     $set: { rated: "PG", "tomatoes.viewer.rating": 4.5 },
+     $currentDate: { lastupdated: true }
+   }
+)
