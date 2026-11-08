@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec tsx index.js",
+    "swagger": "tsx swagger.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "contract:emit": "prisma-cli contract emit"
   },
@@ -22,12 +23,14 @@
     "jsonwebtoken": "^9.0.3",
     "moongose": "^1.0.0",
     "nodemon": "^3.1.14",
-    "pg": "^8.23.0"
+    "pg": "^8.23.0",
+    "swagger-ui-express": "^4.6.2"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",
     "@types/pg": "^8.23.1",
     "prisma": "^7.10.0",
+    "swagger-autogen": "^2.23.7",
     "tsx": "^4.23.12",
     "typescript": "^7.0.2"
   }

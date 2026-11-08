@@ -3,6 +3,7 @@ import * as bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken"
 
 export const register = async (req, res)=>{
+  // #swagger.tags = ['Auth']
   const {username, email, password} = req.body
 
   const user = await prisma.User.findFirst({
@@ -42,6 +43,7 @@ export const register = async (req, res)=>{
 }
 
 export const login = async (req, res)=>{
+  // #swagger.tags = ['Auth']
   const {username, email, password} = req.body
   const user = await prisma.User.findFirst({
     where: {
@@ -51,6 +53,7 @@ export const login = async (req, res)=>{
       ]
     }
   })
+  
 
   if (!user || !(await bcrypt.compare(password, user.password))) {
     return res.status(401).json({data: null, message: 'Invalid credentials' });
